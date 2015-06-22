@@ -1,7 +1,6 @@
-var DCT= require('./');
+var dct = require('./');
 
 process.stdin.on('data', function (data) {
-    console.log(data.toString());
-    var coef = (new DCT()).run(data.toString().split(','));
+    var coef = dct(data.toString().split(','));
     console.log(coef);
 });

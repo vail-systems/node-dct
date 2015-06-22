@@ -9,8 +9,8 @@
 \*===========================================================================*/
 cosMap = null;
 
-// Builds a cosine map for the given block size. This allows multiple block sizes to be
-// memoized automagically.
+// Builds a cosine map for the given input size. This allows multiple input sizes to be memoized automagically
+// if you want to run the DCT over and over.
 var memoizeCosines = function(N) {
   cosMap = cosMap || {};
   cosMap[N] = new Array(N*N);
@@ -24,18 +24,12 @@ var memoizeCosines = function(N) {
   }
 };
 
-function run(signal, scale) {
-  var L = signal.length,
-      self = this;
-
+function dct(signal, scale) {
+  var L = signal.length;
   scale = scale || 2;
 
   if (!cosMap || !cosMap[L]) memoizeCosines(L);
 
-  // Discrete Cosine Transform is O(n*m) where:
-  // n: number of MFCC bins
-  // m: number of Spectrum bins
-  // Usually n == 12 and 20 <= m <= 40
   var coefficients = signal.map(function () {return 0;});
 
   return coefficients.map(function (__, ix) {
@@ -45,4 +39,4 @@ function run(signal, scale) {
   });
 };
 
-module.exports = run;
+module.exports = dct;

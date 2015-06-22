@@ -1,6 +1,6 @@
 {
   "name": "dct",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js implementation of the Discrete Cosine Transform (version 2 for now).",
   "license": "MIT",
   "homepage": "https://github.com/vail-systems/node-dct",
@@ -14,6 +14,7 @@
   },
   "main": "index.js",
   "files": [
+    "index.js",
     "dct.js",
     "src",
     "test"
